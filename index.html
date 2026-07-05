@@ -6,7 +6,7 @@
   <title>TER Impact Calculator — How much is your expense ratio costing you?</title>
   <meta name="description" content="See exactly how a small TER hike silently drains your mutual fund SIP corpus over time. Free calculator by Shubhankar Patil." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,7 +24,7 @@
       --red-bg: rgba(232, 69, 60, 0.08);
       --red-border: rgba(232, 69, 60, 0.25);
       --accent: #f0c94a;
-      --font-display: 'Syne', sans-serif;
+      --font-display: 'Outfit', sans-serif;
       --font-body: 'Inter', sans-serif;
       --radius: 10px;
     }
@@ -136,10 +136,25 @@
     }
 
     .control-value {
-      font-family: var(--font-display);
+      font-family: var(--font-body);
       font-size: 22px;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .control-unit {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-left: 2px;
+    }
+
+    .control-symbol {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-right: 1px;
     }
 
     input[type="range"] {
@@ -180,17 +195,19 @@
     }
 
     .ter-val-a {
-      font-family: var(--font-display);
+      font-family: var(--font-body);
       font-size: 26px;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--green);
+      font-variant-numeric: tabular-nums;
     }
 
     .ter-val-b {
-      font-family: var(--font-display);
+      font-family: var(--font-body);
       font-size: 26px;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--red);
+      font-variant-numeric: tabular-nums;
     }
 
     /* ── INSIGHT ── */
@@ -244,10 +261,11 @@
     }
 
     .stat-value {
-      font-family: var(--font-display);
+      font-family: var(--font-body);
       font-size: 24px;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--text);
+      font-variant-numeric: tabular-nums;
     }
 
     .stat-value.green { color: var(--green); }
@@ -330,8 +348,16 @@
       text-align: right;
     }
 
-    @media (max-width: 520px) {
-      .footer-disclaimer { text-align: left; }
+    @media (max-width: 720px) {
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .footer-disclaimer {
+        text-align: left;
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -352,17 +378,17 @@
       <div class="controls">
         <div class="control-group">
           <span class="control-label">Monthly SIP</span>
-          <span class="control-value">₹<span id="sipVal">10,000</span></span>
+          <span class="control-value"><span class="control-symbol">₹</span><span id="sipVal">10,000</span></span>
           <input type="range" id="sip" min="1000" max="100000" step="1000" value="10000" />
         </div>
         <div class="control-group">
           <span class="control-label">Investment horizon</span>
-          <span class="control-value"><span id="horizonVal">25</span> yrs</span>
+          <span class="control-value"><span id="horizonVal">25</span> <span class="control-unit">yrs</span></span>
           <input type="range" id="horizon" min="5" max="40" step="1" value="25" />
         </div>
         <div class="control-group">
           <span class="control-label">Expected annual return</span>
-          <span class="control-value"><span id="returnsVal">12.0</span>%</span>
+          <span class="control-value"><span id="returnsVal">12.0</span><span class="control-unit">%</span></span>
           <input type="range" id="returns" min="8" max="18" step="0.5" value="12" />
         </div>
         <div class="control-group">
